@@ -1,0 +1,16 @@
+---
+
+- hosts: all
+  tasks:
+  - name: Authenticate to the cloud and retrieve the service catalog
+    os_auth:
+      cloud: admin-openrc
+  - name: Create testansiblefalovor
+    os_nova_flavor:
+      cloud: admin-openrc
+      state: present
+      name: testanibleflavor
+      ram: 1024
+      vcpus: 1
+      disk: 10
+      ephemeral: 10
